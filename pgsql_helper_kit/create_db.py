@@ -5,7 +5,7 @@ from sqlalchemy import create_engine, select
 from sqlalchemy.orm import sessionmaker
 
 
-def creae_db(host_name , db_name , user_name = None , password = None):
+def creae_db_session(host_name , db_name , user_name = None , password = None):
     """
     The function to create the database and the connection
     """
@@ -29,7 +29,6 @@ def creae_db(host_name , db_name , user_name = None , password = None):
 
 
 
-test_engine , test_session = creae_db(host_name= 'localhost' , db_name='test_db' ,  password='mysecretpassword')
-print(test_engine)
-print(test_session)
+
+
 
