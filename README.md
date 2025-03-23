@@ -12,7 +12,7 @@ The PostgreSQL Helper Kit is a Python-based utility designed to simplify databas
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/pgsql-helper-kit.git
+   git clone https://github.com/abhishekprakash256/pgsql-helper-kit.git
    cd pgsql-helper-kit
    ```
 
