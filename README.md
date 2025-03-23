@@ -18,6 +18,8 @@ The PostgreSQL Helper Kit is a Python-based utility designed to simplify databas
 
 2. Install dependencies:
    ```bash
+   pip install git+https://github.com/abhishekprakash256/pgsql-helper-kit.git  
+   
    pip install -r requirements.txt
    ```
 
