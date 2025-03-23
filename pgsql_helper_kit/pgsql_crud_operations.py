@@ -18,7 +18,7 @@ class Db_Helper():
     The class to make the CRUD operations
     """
 
-    def __init__(self,session, engine):
+    def __init__(self, engine ,session):
         self.session = session
         self.engine = engine
 
