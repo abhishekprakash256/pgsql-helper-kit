@@ -31,7 +31,7 @@ def create_db_session(host_name , db_name , user_name = None , password = None ,
     # Create the table (if it doesn't exist)
     Base.metadata.create_all(engine)
 
-    print("Client created successfully")
+    print("PGSQL client created successfully")
 
     return engine, session
 
