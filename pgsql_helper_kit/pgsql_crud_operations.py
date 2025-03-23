@@ -138,7 +138,7 @@ db_helper = Db_Helper(session=test_session, engine=test_engine)
 
 user = User(username='test_user4', password='test_password', userhash='test_hash')
 
-print(db_helper.create_user(username='test_user4', password='test_password', userhash='test_hash'))
+print(db_helper.create_user(username='test_user5', password='parrot@984ks', userhash='89JBJFs'))
 print(db_helper.get_user_password(username='test_user4'))
 print(db_helper.get_user_hash(username='test_user4'))
 print(db_helper.check_user_exists(username='test_user4'))
@@ -149,3 +149,10 @@ print(db_helper.get_all_users())
 print(db_helper.check_user_exists(username='test_user4'))
 
 
+def verify_password(input_password, stored_hashed_password):
+    return checkpw(input_password.encode('utf-8'), stored_hashed_password.encode('utf-8'))
+
+if verify_password('parrot@984ks', db_helper.get_user_password('test_user5')):
+    print("Password verified")
+else:
+    print("Password not verified")
