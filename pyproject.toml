@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "pgsql-helper-kit"
+version = "0.1.0"
+description = "The repo to perform crud operations in pgsql"
+authors = ["abhishekprakash256 <abhishekprakash47@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+SQLAlchemy= "^2.0.39"
+pytest= "^8.3.3"
+bcrypt= "^4.3.0" 
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
