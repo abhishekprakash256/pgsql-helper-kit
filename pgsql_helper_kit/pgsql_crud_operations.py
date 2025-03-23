@@ -11,16 +11,6 @@ from sqlalchemy.exc import SQLAlchemyError
 from bcrypt import hashpw, gensalt, checkpw
 
 
-#testing the function
-test_engine , test_session = create_db_session(host_name= 'localhost' , db_name='test_db' , user_name='abhi', password='mysecretpassword')
-print(test_engine)
-print(test_session)
-
-print(test_engine.url)
-
-
-
-
 
 
 class Db_Helper():
@@ -134,27 +124,3 @@ class Db_Helper():
 
 
 
-
-db_helper = Db_Helper(session=test_session, engine=test_engine)
-
-
-user = User(username='test_user4', password='test_password', userhash='test_hash')
-
-print(db_helper.create_user(username='test_user5', password='parrot@984ks', userhash='89JBJFs'))
-print(db_helper.get_user_password(username='test_user4'))
-print(db_helper.get_user_hash(username='test_user4'))
-print(db_helper.check_user_exists(username='test_user4'))
-print(db_helper.get_all_users())
-print(db_helper.update_user_password(username='test_user', new_password='new_password'))
-print(db_helper.delete_user(username='test_user4'))
-print(db_helper.get_all_users())
-print(db_helper.check_user_exists(username='test_user4'))
-
-
-def verify_password(input_password, stored_hashed_password):
-    return checkpw(input_password.encode('utf-8'), stored_hashed_password.encode('utf-8'))
-
-if verify_password('parrot@984ks', db_helper.get_user_password('test_user5')):
-    print("Password verified")
-else:
-    print("Password not verified")
