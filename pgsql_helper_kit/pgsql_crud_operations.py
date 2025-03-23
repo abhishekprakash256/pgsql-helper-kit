@@ -42,14 +42,9 @@ class Db_Helper():
 
     def create_user(self, username: str, password: str, userhash: str):
         """Creates a new user if they do not already exist."""
-        all_users = self.session.query(User).all()
-        print("All users in SQLAlchemy:", all_users)
 
         print("Connected to:", self.engine.url)
         try:
-            #all_users = self.session.query(User).all()
-            #print("All users in SQLAlchemy:", all_users)
-
             existing_user = self.session.query(User).filter(User.username == username).first()
             #self.session.expire(existing_user)
             if existing_user:
@@ -64,6 +59,7 @@ class Db_Helper():
             self.session.commit()
             logging.info("User %s created successfully.", username)
             return True
+        
         except SQLAlchemyError as e:
             self.session.rollback()
             logging.error("Error creating user: %s", str(e))
@@ -72,17 +68,20 @@ class Db_Helper():
 
     def check_user_exists(self, username: str) -> bool:
         """Checks if a user exists in the database."""
+
         return self.session.query(User).filter(User.username == username).first() is not None
 
 
     def get_user_password(self, username: str):
         """Retrieves the hashed password of a user."""
+
         user = self.session.query(User).filter(User.username == username).first()
         return user.password if user else None
 
 
     def update_user_password(self, username: str, new_password: str):
         """Updates the password of a user after hashing it."""
+
         try:
             user = self.session.query(User).filter(User.username == username).first()
             if not user:
@@ -101,6 +100,7 @@ class Db_Helper():
 
     def delete_user(self, username: str):
         """Deletes a user from the database."""
+
         try:
             user = self.session.query(User).filter(User.username == username).first()
             if not user:
@@ -119,11 +119,13 @@ class Db_Helper():
 
     def get_all_users(self):
         """Returns a list of all users."""
+
         return self.session.query(User).all()
 
 
     def get_user_hash(self, username: str):
         """Retrieves the user hash of a user."""
+        
         user = self.session.query(User).filter(User.username == username).first()
         return user.userhash if user else None
 
