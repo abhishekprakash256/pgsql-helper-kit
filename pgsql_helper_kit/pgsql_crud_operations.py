@@ -70,6 +70,67 @@ class Db_Helper():
             return False
 
 
+    def check_user_exists(self, username: str) -> bool:
+        """Checks if a user exists in the database."""
+        return self.session.query(User).filter(User.username == username).first() is not None
+
+
+    def get_user_password(self, username: str):
+        """Retrieves the hashed password of a user."""
+        user = self.session.query(User).filter(User.username == username).first()
+        return user.password if user else None
+
+
+    def update_user_password(self, username: str, new_password: str):
+        """Updates the password of a user after hashing it."""
+        try:
+            user = self.session.query(User).filter(User.username == username).first()
+            if not user:
+                logging.warning("User %s not found.", username)
+                return False
+
+            user.password = self.hash_password(new_password)
+            self.session.commit()
+            logging.info("Password updated for user %s.", username)
+            return True
+        except SQLAlchemyError as e:
+            self.session.rollback()
+            logging.error("Error updating password: %s", str(e))
+            return False
+
+
+    def delete_user(self, username: str):
+        """Deletes a user from the database."""
+        try:
+            user = self.session.query(User).filter(User.username == username).first()
+            if not user:
+                logging.warning("User %s not found.", username)
+                return False
+
+            self.session.delete(user)
+            self.session.commit()
+            logging.info("User %s deleted successfully.", username)
+            return True
+        except SQLAlchemyError as e:
+            self.session.rollback()
+            logging.error("Error deleting user: %s", str(e))
+            return False
+
+
+    def get_all_users(self):
+        """Returns a list of all users."""
+        return self.session.query(User).all()
+
+
+    def get_user_hash(self, username: str):
+        """Retrieves the user hash of a user."""
+        user = self.session.query(User).filter(User.username == username).first()
+        return user.userhash if user else None
+
+
+
+
+
 
 
 db_helper = Db_Helper(session=test_session, engine=test_engine)
@@ -77,8 +138,14 @@ db_helper = Db_Helper(session=test_session, engine=test_engine)
 
 user = User(username='test_user4', password='test_password', userhash='test_hash')
 
-
-
-print(db_helper.create_user(user.username, user.password, user.userhash))
+print(db_helper.create_user(username='test_user4', password='test_password', userhash='test_hash'))
+print(db_helper.get_user_password(username='test_user4'))
+print(db_helper.get_user_hash(username='test_user4'))
+print(db_helper.check_user_exists(username='test_user4'))
+print(db_helper.get_all_users())
+print(db_helper.update_user_password(username='test_user', new_password='new_password'))
+print(db_helper.delete_user(username='test_user4'))
+print(db_helper.get_all_users())
+print(db_helper.check_user_exists(username='test_user4'))
 
 
