@@ -4,7 +4,7 @@ The function to create the database and the connection
 from sqlalchemy import create_engine, select
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
-from user_schema import User
+
 
 
 Base = declarative_base()
