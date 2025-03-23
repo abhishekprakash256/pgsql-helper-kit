@@ -3,8 +3,8 @@ The crud operations file for the pgsql_helper_kit package.
 """
 
 
-from create_db import create_db_session
-from user_schema import User
+from .create_db import create_db_session
+from .user_schema import User
 import logging
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
