@@ -11,6 +11,7 @@ Base = declarative_base()
 class User(Base):
     __tablename__ = 'users'
 
+
     id = Column(Integer, primary_key=True, index=True)
     username = Column(String, unique=True, index=True, nullable=False)
     password = Column(String, nullable=False)
@@ -18,3 +19,5 @@ class User(Base):
 
     def __repr__(self):
         return f"User(id={self.id}, username={self.username})"
+
+# Create the table (if it doesn't exist)
