@@ -1,7 +1,3 @@
-Here's a modified version of your **Development Documentation** tailored for **`pgsql-helper-kit`** instead of `mongo-helper-kit`. Let me know if you need any refinements! 🚀  
-
----
-
 # **📌 PGSQL Helper Kit - Development Documentation**
 
 ## **1. Requirements**
@@ -237,6 +233,3 @@ jobs:
 ✅ **Best practices** for feature development, merging, and deployment.  
 ✅ **Easy setup** with PostgreSQL (bare-metal or Docker).  
 
----
-
-This should be **fully aligned** with `pgsql-helper-kit` while keeping best practices intact! Let me know if you need any modifications. 🚀

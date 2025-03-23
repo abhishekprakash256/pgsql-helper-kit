@@ -1,6 +1,6 @@
 # pgsql-helper-kit
 
-A Python-based PostgreSQL helper kit for performing CRUD operations efficiently using SQLAlchemy.
+The PostgreSQL Helper Kit is a Python-based utility designed to simplify database interactions using SQLAlchemy. It provides an intuitive interface for performing CRUD (Create, Read, Update, Delete) operations efficiently, ensuring best practices in database management.
 
 ## Features
 - User management (Create, Read, Update, Delete)
@@ -105,6 +105,4 @@ Logging is enabled for debugging. Modify logging levels in `logging.basicConfig(
 3. Commit your changes.
 4. Push the branch and open a pull request.
 
-## License
-MIT License. See `LICENSE` for details.
 
