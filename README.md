@@ -40,6 +40,20 @@ docker run -d --name postgres-container \
 
 ```
 
+4. Check the data in SQL commands
+
+```
+docker exec -it postgres-container psql -U abhi -d test_db   #connect to docker container 
+
+\c test_db    #connect to the database 
+
+SELECT * FROM users;   # ; is imp , to check all  the entry
+
+SELECT * FROM public.users;   #to the check all the entry
+
+```
+
+
 
 ## Usage
 
